@@ -5,6 +5,15 @@ class main
 {
     static List<Book> books = new ArrayList<>();
 
+    /**
+     * Adds a new book to the library after validating its details.
+     *
+     * @param title the title of the book
+     * @param author the author of the book
+     * @param copies the number of available copies
+     * @throws IllegalArgumentException if title or author is empty,
+     *                                  or copies is zero or negative
+     */
     static void addBook(String title, String author, int copies)
     {
          if (title == null || title.trim().isEmpty())

@@ -1,1 +1,5 @@
 package tests;
+class tests
+{
+    
+}

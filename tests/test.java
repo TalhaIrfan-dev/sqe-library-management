@@ -1,5 +1,5 @@
 package tests;
-class tests
+class test
 {
-    
+
 }

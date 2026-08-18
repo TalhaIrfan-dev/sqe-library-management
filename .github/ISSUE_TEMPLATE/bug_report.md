@@ -1,21 +1,41 @@
-# Bug Report
+---
+name: Bug Report
+about: Report a problem or bug in the Library Management System
+title: "[BUG] "
+labels: bug
+assignees: ""
+---
 
 ## Description
-<!-- Clearly describe the bug. -->
+
+<!-- Clearly describe the bug or problem. -->
 
 ## Steps to Reproduce
-1.
-2.
-3.
+
+1. 
+2. 
+3. 
 
 ## Expected Result
+
 <!-- What should have happened? -->
 
 ## Actual Result
+
 <!-- What actually happened? -->
 
 ## Environment
-<!-- OS, browser, Java version, application version, etc. -->
+
+- Operating System:
+- Java Version:
+- Application Version:
+- Other relevant details:
 
 ## Severity
-<!-- Low / Medium / High / Critical -->
+
+<!-- Select one -->
+
+- [ ] Low
+- [ ] Medium
+- [ ] High
+- [ ] Critical

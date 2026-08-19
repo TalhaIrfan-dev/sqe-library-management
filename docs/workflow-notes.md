@@ -316,8 +316,6 @@ QA involvement is therefore not limited to the final testing stage. A QA enginee
 
 ---
 
----
-
 # Task 4 — Commit Hygiene Audit
 
 ## Last 10 Commits
@@ -376,3 +374,9 @@ The rewritten message uses the docs: type and clearly identifies that documentat
 ## Note
 
 The commit messages above are rewritten only for this audit documentation. The existing Git history was not changed, and no force-push was performed.
+
+---
+
+# Rebase Practice
+
+Rebase practice is ready.

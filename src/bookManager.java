@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class bookManager 
+public class BookManager 
 {
     static List<book> books = new ArrayList<>();
 
@@ -44,7 +44,12 @@ public class bookManager
      */
     static book findBook(String title)
     {
-        String t = title.trim();
+        if (title == null || title.trim().isEmpty())
+        {
+            return null;
+        }
+
+    String t = title.trim();
 
         for (book b : books)
         {

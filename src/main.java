@@ -3,7 +3,7 @@ import java.util.List;
 
 class main
 {
-    bookManager bm = new bookManager();
+    BookManager bm = new BookManager();
     static List<book> books = new ArrayList<>();
 
     

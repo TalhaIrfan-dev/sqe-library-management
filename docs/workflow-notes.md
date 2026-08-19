@@ -258,57 +258,60 @@ The overall workflow is:
 
 QA involvement is therefore not limited to the final testing stage. A QA engineer can contribute throughout the entire software development workflow, from understanding the initial idea and defining test criteria to validating the final release.
 
-
+---
 
 ## Task 3 — Deliberate Merge Conflict
 
 ### Cause of the Conflict
 
-Two feature branches were created from `main` and modified the same field in `src/book.java` differently.
+  Two feature branches were created from `main` and modified the same field in `src/book.java` differently.
 
-- `feature/rename-field-a` renamed the field to `bookTitle`.
-- `feature/rename-field-b` renamed the field to `bookName`.
+  - `feature/rename-field-a` renamed the field to `bookTitle`.
+  - `feature/rename-field-b` renamed the field to `bookName`.
 
-After Branch A was merged into `main`, merging `main` into Branch B caused a content conflict because both branches changed the same lines differently.
+  After Branch A was merged into `main`, merging `main` into Branch B caused a content conflict because both branches changed the same lines differently.
 
 ### Conflict Resolution
 
-The conflict was resolved locally on `feature/rename-field-b`.
+  The conflict was resolved locally on `feature/rename-field-b`.
 
-The updated `main` branch was merged into Branch B using:
+  The updated `main` branch was merged into Branch B using:
 
-```bash
-git merge main
-```
+  ```bash
+  git merge main
+  ```
 
-# Git Merge Conflict Resolution
+### Git Merge Conflict Resolution
 
-Git reported a conflict in:
+  Git reported a conflict in:
 
-```text
-src/book.java
-```
+  ```text
+  src/book.java
+  ```
 
-The conflict markers were manually resolved by choosing the required version of the code. The resolved file was then staged and committed:
+  The conflict markers were manually resolved by choosing the required version of the code. The resolved file was then staged and committed:
 
-```powershell
-git add .
-git commit -m "resolve merge conflict between rename branches"
-git push
-```
+  ```powershell
+  git add .
+  git commit -m "resolve merge conflict between rename branches"
+  git push
+  ```
 
-After pushing the resolution, GitHub showed:
+  After pushing the resolution, GitHub showed:
 
-**No conflicts with base branch**
+  **No conflicts with base branch**
 
-The Branch B pull request was then ready to be merged.
+  The Branch B pull request was then ready to be merged.
 
-## Documentation Commit
+### Documentation Commit
 
-Then separately run these commands in PowerShell:
+  Then separately run these commands in PowerShell:
 
-```powershell
-git add docs/workflow-notes.md
-git commit -m "docs: document merge conflict resolution"
-git push
-```
+  ```powershell
+  git add docs/workflow-notes.md
+  git commit -m "docs: document merge conflict resolution"
+  git push
+  ```
+
+---
+

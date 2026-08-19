@@ -259,6 +259,7 @@ The overall workflow is:
 QA involvement is therefore not limited to the final testing stage. A QA engineer can contribute throughout the entire software development workflow, from understanding the initial idea and defining test criteria to validating the final release.
 
 ---
+---
 
 # Task 3 — Deliberate Merge Conflict
 
@@ -315,3 +316,63 @@ QA involvement is therefore not limited to the final testing stage. A QA enginee
 
 ---
 
+---
+
+# Task 4 — Commit Hygiene Audit
+
+## Last 10 Commits
+
+The following is the output of `git log --oneline -10`:
+
+```text
+  b6b2659 (HEAD -> main, origin/main, origin/HEAD) docs updated again : document merge conflict resolution
+  4cf5e73 docs updated : document merge conflict resolution
+  f789e57 refactor(library): rename Book file differently (#12)
+  b1cffc7 refactor(library): rename title field (#11)
+  adf6973 refactor(library): organize book management and added Find book (#10)
+  140b2ea feat(library): add book creation capability (#9)
+  576bbc5 Branch2 (#7)
+  e4554e0 Merge remote changes into main
+  b773888 Add workflow notes and QA responsibilities
+  13824ca branch2 (#6)
+```
+
+## Weak Commit Message 1
+
+**Original:**
+
+```text
+  4cf5e73 docs updated : document merge conflict resolution
+```
+
+**Rewritten Conventional Commit:**
+
+```text
+docs: document merge conflict resolution
+```
+
+**Why the rewritten version is better:**
+
+The rewritten message follows the Conventional Commits format by using the docs: type. It clearly describes the purpose of the commit and avoids the vague wording used in the original message. It is also shorter, clearer, and more consistent with the other Conventional Commit messages in the project.
+
+## Weak Commit Message 2
+
+**Original:**
+
+```text
+b6b2659 docs updated again : document merge conflict resolution
+```
+
+**Rewritten Conventional Commit:**
+
+```text
+docs: update merge conflict resolution notes
+```
+
+**Why the rewritten version is better:**
+
+The rewritten message uses the docs: type and clearly identifies that documentation was updated. It removes vague wording such as updated again and follows the Conventional Commits structure, making the commit history easier to understand and maintain.
+
+## Note
+
+The commit messages above are rewritten only for this audit documentation. The existing Git history was not changed, and no force-push was performed.

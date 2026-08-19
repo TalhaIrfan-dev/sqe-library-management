@@ -53,7 +53,7 @@ public class BookManager
 
         for (book b : books)
         {
-            if (b.title.equalsIgnoreCase(t))
+            if (b.bookName.equalsIgnoreCase(t))
             {
                 return b;
             }

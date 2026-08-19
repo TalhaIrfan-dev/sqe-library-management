@@ -1,12 +1,12 @@
 public class book
 {
-        String bookTitle;
+        String bookName;
         String author;
         int copies;
 
         book(String title, String author, int copies)
         {
-            this.bookTitle = title;
+            this.bookName = title;
             this.author = author;
             this.copies = copies;
         }

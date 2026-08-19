@@ -260,9 +260,9 @@ QA involvement is therefore not limited to the final testing stage. A QA enginee
 
 ---
 
-## Task 3 — Deliberate Merge Conflict
+# Task 3 — Deliberate Merge Conflict
 
-### Cause of the Conflict
+## Cause of the Conflict
 
   Two feature branches were created from `main` and modified the same field in `src/book.java` differently.
 
@@ -271,7 +271,7 @@ QA involvement is therefore not limited to the final testing stage. A QA enginee
 
   After Branch A was merged into `main`, merging `main` into Branch B caused a content conflict because both branches changed the same lines differently.
 
-### Conflict Resolution
+## Conflict Resolution
 
   The conflict was resolved locally on `feature/rename-field-b`.
 
@@ -281,7 +281,7 @@ QA involvement is therefore not limited to the final testing stage. A QA enginee
   git merge main
   ```
 
-### Git Merge Conflict Resolution
+## Git Merge Conflict Resolution
 
   Git reported a conflict in:
 
@@ -303,7 +303,7 @@ QA involvement is therefore not limited to the final testing stage. A QA enginee
 
   The Branch B pull request was then ready to be merged.
 
-### Documentation Commit
+## Documentation Commit
 
   Then separately run these commands in PowerShell:
 

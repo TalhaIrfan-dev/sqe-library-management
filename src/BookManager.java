@@ -26,10 +26,10 @@ public class BookManager
             throw new IllegalArgumentException("Book author cannot be empty");
         }
 
-        // if (copies <= 0)
-        // {
-        //     throw new IllegalArgumentException("Number of copies must be greater than zero");
-        // }
+        if (copies <= 0)
+        {
+            throw new IllegalArgumentException("Number of copies must be greater than zero");
+        }
 
         book book = new book(title, author, copies);
         books.add(book);

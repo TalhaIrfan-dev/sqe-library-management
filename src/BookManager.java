@@ -31,6 +31,14 @@ public class BookManager
             throw new IllegalArgumentException("Number of copies must be greater than zero");
         }
 
+        for (book b : books)
+        {
+            if (b.bookName.equalsIgnoreCase(title.trim()))
+            {
+                throw new IllegalArgumentException("Book already exists");
+            }
+        }
+
         book book = new book(title, author, copies);
         books.add(book);
     }

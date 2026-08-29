@@ -31,6 +31,7 @@ public class BookManager
             throw new IllegalArgumentException("Number of copies must be greater than zero");
         }
 
+        // ISSUE #15: duplicate books are currently allowed
         book book = new book(title, author, copies);
         books.add(book);
     }

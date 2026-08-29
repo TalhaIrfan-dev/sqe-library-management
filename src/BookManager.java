@@ -44,7 +44,7 @@ public class BookManager
      */
     static book findBook(String title)
     {
-        if (title == null || title.trim().isEmpty())
+        if (title.trim().isEmpty())
         {
             return null;
         }

@@ -1,6 +1,9 @@
 ## Description
 
-<!-- Briefly describe the changes made in this pull request. -->
+<!-- Briefly describe the purpose of this pull request and the problem it addresses. -->
+
+## Changes
+<!-- List the main changes made in this pull request. -->
 
 ## Related Issue
 

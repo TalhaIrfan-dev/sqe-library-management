@@ -33,6 +33,10 @@ public class BookManager
         {
             throw new IllegalArgumentException("ISBN cannot be empty");
         }
+        String isbn = ISBN.trim();
+
+        if (!isbn.matches("\\d{10}|\\d{13}"))
+            throw new IllegalArgumentException("Invalid ISBN format");
 
         if (copies <= 0)
         {

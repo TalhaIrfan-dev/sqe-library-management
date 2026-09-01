@@ -1,3 +1,4 @@
+package LibrarySystem;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,4 +19,13 @@ public class member
         this.memberId = memberId;
         this.memberName = memberName;
     }
+
+    public String getmemberId()
+    {return memberId;}
+    public String getmemberName()
+    {return memberName;}
+    public List getborrowedBooks()
+    {return borrowedBooks;}
+    public Map getdueDates()
+    {return dueDates;}
 }

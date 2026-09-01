@@ -1,3 +1,4 @@
+package LibrarySystem;
 public class book
 {
         String bookName;
@@ -14,4 +15,16 @@ public class book
             this.totalCopies = copies;
             this.availableCopies = copies;
         }
+
+        public String getbookName()
+        {return bookName;}
+        public String getauthor()
+        {return author;}
+        public String getISBN()
+        {return ISBN;}  
+        public int gettotalCopies()
+        {return totalCopies;}
+        public int getavailableCopies()
+        {return availableCopies;}
+
 }

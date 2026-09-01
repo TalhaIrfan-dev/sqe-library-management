@@ -1,9 +1,10 @@
+package LibrarySystem;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BookManager 
 {
-    static List<book> books = new ArrayList<>();
+    public static List<book> books = new ArrayList<>();   // public should be removed
 
     /**
      * Adds a new book to the library after validating its details.
@@ -16,7 +17,7 @@ public class BookManager
      *                                  if ISBN already exists,
      *                                  or if copies is zero or negative
      */
-    static void addBook(String title, String author, String ISBN, int copies)
+    public static void addBook(String title, String author, String ISBN, int copies)
     {
          if (title == null || title.trim().isEmpty())
         {
@@ -66,7 +67,7 @@ public class BookManager
      * @param title the title of the book to search for
      * @return the matching book, or null if no book is found
      */
-    static book findBookByTitle(String title)
+    public static book findBookByTitle(String title)
     {
         if (title == null || title.trim().isEmpty())
         {
@@ -86,7 +87,7 @@ public class BookManager
         return null;
     }
 
-    static book findBookByISBN(String ISBN)
+    public static book findBookByISBN(String ISBN)
     {
         if (ISBN == null || ISBN.trim().isEmpty())
         {

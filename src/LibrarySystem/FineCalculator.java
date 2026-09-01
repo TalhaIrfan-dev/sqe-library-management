@@ -1,3 +1,4 @@
+package LibrarySystem;
 public class FineCalculator {
 
     public static double calculateFine(int overdueDays) {

@@ -1,12 +1,13 @@
+package LibrarySystem;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MemberManager
 {
-    static List<member> members = new ArrayList<>();
+    public static List<member> members = new ArrayList<>();
 
-    static void addMember(String memberId, String memberName)
+    public static void addMember(String memberId, String memberName)
     {
         if (memberId == null || memberId.trim().isEmpty())
         {
@@ -30,7 +31,7 @@ public class MemberManager
         members.add(m);
     }
 
-    static member findMember(String memberId)
+    public static member findMember(String memberId)
     {
         if (memberId == null || memberId.trim().isEmpty())
         {
@@ -50,7 +51,7 @@ public class MemberManager
         return null;
     }
 
-    static void borrowBook(String memberId, String ISBN)
+    public static void borrowBook(String memberId, String ISBN)
     {
          if (ISBN == null || ISBN.trim().isEmpty())
         {
@@ -99,7 +100,7 @@ public class MemberManager
         m.dueDates.put(selectedBook, dueDate);
     }
 
-    static double returnBook(String memberId, String ISBN)
+    public static double returnBook(String memberId, String ISBN)
     {
         if (ISBN == null || ISBN.trim().isEmpty())
         {

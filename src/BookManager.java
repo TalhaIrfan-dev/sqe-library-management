@@ -10,11 +10,13 @@ public class BookManager
      *
      * @param title the title of the book
      * @param author the author of the book
+     * @param ISBN the ISBN of the book
      * @param copies the number of available copies
-     * @throws IllegalArgumentException if title or author is empty,
-     *                                  or copies is zero or negative
+     * @throws IllegalArgumentException if title, author, or ISBN is empty,
+     *                                  if ISBN already exists,
+     *                                  or if copies is zero or negative
      */
-    static void addBook(String title, String author, int copies)
+    static void addBook(String title, String author, String ISBN, int copies)
     {
          if (title == null || title.trim().isEmpty())
         {
@@ -26,11 +28,25 @@ public class BookManager
             throw new IllegalArgumentException("Book author cannot be empty");
         }
 
+        if (ISBN == null || ISBN.trim().isEmpty())
+        {
+            throw new IllegalArgumentException("ISBN cannot be empty");
+        }
+
         if (copies <= 0)
         {
             throw new IllegalArgumentException("Number of copies must be greater than zero");
         }
 
+         for (book b : books)
+        {
+            if (b.ISBN.equalsIgnoreCase(ISBN.trim()))
+            {
+                throw new IllegalArgumentException("ISBN already exists");
+            }
+        }
+
+        // // Duplicate title validation retained from Lab 3
         for (book b : books)
         {
             if (b.bookName.equalsIgnoreCase(title.trim()))
@@ -39,7 +55,7 @@ public class BookManager
             }
         }
 
-        book book = new book(title, author, copies);
+        book book = new book(title.trim(), author.trim(), ISBN.trim(), copies);
         books.add(book);
     }
 
@@ -50,18 +66,38 @@ public class BookManager
      * @param title the title of the book to search for
      * @return the matching book, or null if no book is found
      */
-    static book findBook(String title)
+    static book findBookByTitle(String title)
     {
         if (title == null || title.trim().isEmpty())
         {
             return null;
         }
 
-    String t = title.trim();
+        String t = title.trim();
 
         for (book b : books)
         {
             if (b.bookName.equalsIgnoreCase(t))
+            {
+                return b;
+            }
+        }
+
+        return null;
+    }
+
+    static book findBookByISBN(String ISBN)
+    {
+        if (ISBN == null || ISBN.trim().isEmpty())
+        {
+            return null;
+        }
+
+        String id = ISBN.trim();
+
+        for (book b : books)
+        {
+            if (b.ISBN.equalsIgnoreCase(id))
             {
                 return b;
             }

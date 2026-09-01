@@ -4,12 +4,13 @@ import java.util.List;
 class main
 {
     BookManager bm = new BookManager();
-    static List<book> books = new ArrayList<>();
+    MemberManager mm = new MemberManager();
+   
 
     public static void main(String[] args)
     {
-        
-        
+
+       
     }
     
 }

@@ -1,5 +1,4 @@
-# Library Management System
-# Test Plan
+# Library Management System Test Plan
 
 ## 1. Test Plan Identifier
 
@@ -13,7 +12,7 @@
 
 This test plan defines the testing activities for the Library Management System.
 
-The purpose of testing is to verify that the implemented system functions correctly and meets the defined requirements. Testing will focus on book management, member management, book searching, borrowing, and returning books.
+The purpose of testing is to verify that the implemented system functions correctly and meets the defined requirements. Testing will focus on book management, member management, book searching, borrowing, returning books, copy availability, and fine calculation.
 
 ---
 
@@ -27,6 +26,7 @@ The following components of the Library Management System will be tested:
 - Book borrowing
 - Book returning
 - Copy availability management
+- Fine calculation
 
 ---
 
@@ -48,6 +48,10 @@ The following features will be tested:
 - Returning borrowed books
 - Preventing unauthorized returns
 - Maintaining total and available book copies
+- Calculating fines for overdue books
+- Calculating fines when there are zero overdue days
+- Calculating fines for a mid-range overdue period
+- Calculating fines at an overdue-tier boundary
 
 ---
 

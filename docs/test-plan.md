@@ -81,7 +81,7 @@ Each test case will be marked as **Pass**, **Fail**, or **Blocked**.
 
 The overall testing will be considered successful when at least **95% of the planned test cases pass** and **zero Critical defects remain open**.
 
-Since 12 test cases are planned, all **12 test cases must pass** to meet the 95% criterion.
+Since **14 test cases are planned**, at least **14 test cases must pass** to meet the 95% criterion.
 
 - A test case will be marked **Pass** when the actual result matches the expected result.
 - A test case will be marked **Fail** when the system produces a result different from the expected result.

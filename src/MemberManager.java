@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -91,9 +92,14 @@ public class MemberManager
 
         m.borrowedBooks.add(selectedBook);
         selectedBook.availableCopies--;
+
+        LocalDate borrowDate = LocalDate.now();
+        LocalDate dueDate = borrowDate.plusDays(7);
+
+        m.dueDates.put(selectedBook, dueDate);
     }
 
-    static void returnBook(String memberId, String ISBN)
+    static double returnBook(String memberId, String ISBN)
     {
         if (ISBN == null || ISBN.trim().isEmpty())
         {
@@ -123,7 +129,25 @@ public class MemberManager
             throw new IllegalArgumentException("Book was not borrowed by this member");
         }
 
+        LocalDate dueDate = m.dueDates.get(selectedBook);
+        LocalDate returnDate = LocalDate.now();
+
+        long overdueDays = java.time.temporal.ChronoUnit.DAYS.between(
+            dueDate,
+            returnDate
+        );
+
+        if (overdueDays < 0)
+        {
+            overdueDays = 0;
+        }
+
+        double fine = FineCalculator.calculateFine((int) overdueDays);
+
         m.borrowedBooks.remove(selectedBook);
+        m.dueDates.remove(selectedBook);
         selectedBook.availableCopies++;
+
+        return fine;
     }
 }

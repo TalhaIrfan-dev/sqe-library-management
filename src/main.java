@@ -10,7 +10,9 @@ class main
     public static void main(String[] args)
     {
 
-       
+        System.out.println("TC-10: " + FineCalculator.calculateFine(0));
+        System.out.println("TC-11: " + FineCalculator.calculateFine(7));
+        System.out.println("TC-12: " + FineCalculator.calculateFine(10));
     }
     
 }

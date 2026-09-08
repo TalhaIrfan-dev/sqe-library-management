@@ -318,19 +318,23 @@ public class LibraryTests
 
         try
         {
-            BookManager.addBook("Book 1", "Author 1", "1111111111", 1);
-            BookManager.addBook("Book 2", "Author 2", "2222222222", 1);
-            BookManager.addBook("Book 3", "Author 3", "3333333333", 1);
+            BookManager.addBook("Book 1", "Author 1", "1111111111111", 1);
+            BookManager.addBook("Book 2", "Author 2", "2222222222222", 1);
+            BookManager.addBook("Book 3", "Author 3", "3333333333333", 1);
+            BookManager.addBook("Book 4", "Author 4", "4444444444444", 1);
+            BookManager.addBook("Book 5", "Author 5", "5555555555555", 1);
 
             MemberManager.addMember("M001", "Ali");
 
-            MemberManager.borrowBook("M001", "1111111111");
-            MemberManager.borrowBook("M001", "2222222222");
-            MemberManager.borrowBook("M001", "3333333333");
+            MemberManager.borrowBook("M001", "1111111111111");
+            MemberManager.borrowBook("M001", "2222222222222");
+            MemberManager.borrowBook("M001", "3333333333333");
+            MemberManager.borrowBook("M001", "4444444444444");
+            MemberManager.borrowBook("M001", "5555555555555");
 
             member m = MemberManager.findMember("M001");
 
-            if (m.getborrowedBooks().size() == 3)
+            if (m.getborrowedBooks().size() == 5)
             {
                 System.out.println("TC-08: PASS");
             }
@@ -355,20 +359,24 @@ public class LibraryTests
 
         try
         {
-            BookManager.addBook("Book 1", "Author 1", "1111111111", 1);
-            BookManager.addBook("Book 2", "Author 2", "2222222222", 1);
-            BookManager.addBook("Book 3", "Author 3", "3333333333", 1);
-            BookManager.addBook("Book 4", "Author 4", "4444444444", 1);
+            BookManager.addBook("Book 1", "Author 1", "1111111111111", 1);
+            BookManager.addBook("Book 2", "Author 2", "2222222222222", 1);
+            BookManager.addBook("Book 3", "Author 3", "3333333333333", 1);
+            BookManager.addBook("Book 4", "Author 4", "4444444444444", 1);
+            BookManager.addBook("Book 5", "Author 5", "5555555555555", 1);
+            BookManager.addBook("Book 6", "Author 6", "6666666666666", 1);
 
             MemberManager.addMember("M001", "Ali");
 
-            MemberManager.borrowBook("M001", "1111111111");
-            MemberManager.borrowBook("M001", "2222222222");
-            MemberManager.borrowBook("M001", "3333333333");
+            MemberManager.borrowBook("M001", "1111111111111");
+            MemberManager.borrowBook("M001", "2222222222222");
+            MemberManager.borrowBook("M001", "3333333333333");
+            MemberManager.borrowBook("M001", "4444444444444");
+            MemberManager.borrowBook("M001", "5555555555555");
 
             try
             {
-                MemberManager.borrowBook("M001", "4444444444");
+                MemberManager.borrowBook("M001", "6666666666666");
 
                 System.out.println("TC-09: FAIL");
             }
@@ -376,7 +384,7 @@ public class LibraryTests
             {
                 member m = MemberManager.findMember("M001");
 
-                if (m.getborrowedBooks().size() == 3)
+                if (m.getborrowedBooks().size() == 5)
                 {
                     System.out.println("TC-09: PASS");
                 }

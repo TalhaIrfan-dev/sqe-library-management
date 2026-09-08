@@ -1,22 +1,22 @@
 package tests;
 
 import LibrarySystem.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BorrowLimitTest {
 
-    public static void main(String[] args) {
-
-        testMemberWith3Books();
-        testMemberWith5Books();
-
-        System.out.println("\nBorrowing limit EP tests completed!");
-    }
-
-    static void testMemberWith3Books() {
-
+    @BeforeEach
+    void setUp() {
         // Clear previous test data
         BookManager.books.clear();
         MemberManager.members.clear();
+    }
+
+    @Test
+    void memberWith3BooksCanBorrow4thBook() {
 
         // Create member
         MemberManager.addMember("M001", "Ali");
@@ -32,27 +32,14 @@ public class BorrowLimitTest {
         MemberManager.borrowBook("M001", "1234567890124");
         MemberManager.borrowBook("M001", "1234567890125");
 
-        // Attempt to borrow 4th book
-        try {
-            MemberManager.borrowBook("M001", "1234567890126");
-
-            System.out.println(
-                "TC-BL-01 PASS - Member with 3 books can borrow 4th book"
-            );
-
-        } catch (IllegalArgumentException e) {
-
-            System.out.println(
-                "TC-BL-01 FAIL - 4th book was rejected"
-            );
-        }
+        // 4th book should be allowed
+        assertDoesNotThrow(() ->
+            MemberManager.borrowBook("M001", "1234567890126")
+        );
     }
 
-    static void testMemberWith5Books() {
-
-        // Clear previous test data
-        BookManager.books.clear();
-        MemberManager.members.clear();
+    @Test
+    void memberWith5BooksCannotBorrow6thBook() {
 
         // Create member
         MemberManager.addMember("M002", "Ahmed");
@@ -72,19 +59,10 @@ public class BorrowLimitTest {
         MemberManager.borrowBook("M002", "2234567890126");
         MemberManager.borrowBook("M002", "2234567890127");
 
-        // Attempt to borrow 6th book
-        try {
-            MemberManager.borrowBook("M002", "2234567890128");
-
-            System.out.println(
-                "TC-BL-02 FAIL - 6th book was allowed"
-            );
-
-        } catch (IllegalArgumentException e) {
-
-            System.out.println(
-                "TC-BL-02 PASS - 6th book rejected"
-            );
-        }
+        // 6th book should be rejected
+        assertThrows(
+            IllegalArgumentException.class,
+            () -> MemberManager.borrowBook("M002", "2234567890128")
+        );
     }
 }

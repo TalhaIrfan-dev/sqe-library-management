@@ -17,4 +17,29 @@ public class FineCalculator {
 
         return overdueDays * 30;
     }
+
+    public static String fineTier(int overdueDays)
+    {
+        if (overdueDays < 0){
+            throw new IllegalArgumentException("Overdue days cannot be negative");
+        }
+
+        if (overdueDays == 0){
+            return "None";
+        }
+
+        if (overdueDays <= 7){
+            return "Low";
+        }
+
+        if (overdueDays <= 14){
+            return "Medium";
+        }
+
+        if (overdueDays <= 30){
+            return "High";
+        }
+
+        return "Severe";
+    }
 }

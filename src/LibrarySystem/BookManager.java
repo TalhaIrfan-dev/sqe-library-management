@@ -35,8 +35,9 @@ public class BookManager
         }
         String isbn = ISBN.trim();
 
-        if (!isbn.matches("\\d{10}|\\d{13}"))
-            throw new IllegalArgumentException("Invalid ISBN format");
+        if (!validateIsbn(isbn)){
+            throw new IllegalArgumentException("ISBN must contain exactly 13 digits");
+        }
 
         if (copies <= 0)
         {
@@ -62,6 +63,18 @@ public class BookManager
 
         book book = new book(title.trim(), author.trim(), ISBN.trim(), copies);
         books.add(book);
+    }
+
+    public static boolean validateIsbn(String ISBN)
+    {
+        if (ISBN == null)
+        {
+            return false;
+        }
+
+        String isbn = ISBN.trim();
+
+        return isbn.matches("\\d{13}");
     }
 
 

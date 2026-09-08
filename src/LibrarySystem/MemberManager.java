@@ -86,7 +86,7 @@ public class MemberManager
             throw new IllegalArgumentException("No copies available");
         }
 
-        if (m.borrowedBooks.size() >= 3)
+        if (m.borrowedBooks.size() >= 5)
         {
             throw new IllegalArgumentException("Borrowing limit reached");
         }

@@ -4,14 +4,26 @@
 
 This Requirements Traceability Matrix maps each Library Management System functional requirement to the test cases that verify it. The matrix ensures that every requirement has at least one corresponding test case and helps identify any gaps in test coverage.
 
+## Lab 5 Update
+
+During Lab 5, FR-06 was refined to explicitly define the maximum
+number of books a member can have on loan as 5.
+
+The existing traceability links remain valid because TC-08 and TC-09
+were updated to verify the new 5-book borrowing limit.
+
+FR-02 was also refined to explicitly define the ISBN format as exactly
+13 numeric digits. The existing ISBN test coverage in TC-03 remains
+linked to this requirement.
+
 | Requirement ID | Requirement | Linked Test Case IDs | Coverage Status |
 |---|---|---|---|
 | FR-01 | The system shall allow the librarian to add a new book by providing its title, author, ISBN, and number of copies. | TC-01 | Covered |
-| FR-02 | The system shall reject a book when the title, author, or ISBN is empty or invalid, or when the number of copies is less than or equal to zero. | TC-03 | Covered |
+| FR-02 | The system shall reject a book when the title or author is empty, when the ISBN is empty or does not contain exactly 13 numeric digits, or when the number of copies is less than or equal to zero. | TC-03 | Covered |
 | FR-03 | The system shall reject a new book if its ISBN already exists in the library catalog. | TC-02 | Covered |
 | FR-04 | The system shall allow users to search for books by title or ISBN and return the matching book information. | TC-13 | Covered |
 | FR-05 | The system shall allow the librarian to add library members and prevent duplicate member IDs. | TC-14 | Covered |
-| FR-06 | The system shall allow a member to borrow a book when at least one copy is available, while preventing duplicate borrowing, borrowing unavailable books, and borrowing beyond the allowed limit. | TC-04, TC-05, TC-08, TC-09 | Covered |
+| FR-06 | The system shall allow a member to borrow a book when at least one copy is available, while preventing duplicate borrowing, borrowing unavailable books, and borrowing more than 5 books at a time. | TC-04, TC-05, TC-08, TC-09 | Covered |
 | FR-07 | The system shall allow a member to return a book that they have currently borrowed, reject a return when the book was not borrowed by that member, and calculate any applicable fine for overdue returns according to the defined fine policy. | TC-06, TC-07, TC-10, TC-11, TC-12 | Covered |
 | FR-08 | The system shall maintain the total number of copies and available copies of each book, decreasing available copies when a book is borrowed and increasing them when it is returned. | TC-04, TC-06 | Covered |
 

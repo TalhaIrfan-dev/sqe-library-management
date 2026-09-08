@@ -51,7 +51,7 @@ LibraryHub allows a member to have between 0 and 5 books on loan. A member who a
 | Class ID | Input Range | Class Type | Expected Result | Representative |
 |---|---|---|---|---:|
 | EP-BL-01 | `0–5` books | Valid | Borrowing is allowed when a copy is available | `3` |
-| EP-BL-02 | `6+` books | Invalid | `IllegalArgumentException` | `5` attempting 6th |
+| EP-BL-02 | `6+` books | Invalid | `IllegalArgumentException` | `6` |
 
 ### EP Test Cases
 

@@ -65,4 +65,30 @@ public class BorrowLimitTest {
             () -> MemberManager.borrowBook("M002", "2234567890128")
         );
     }
+
+    @Test
+    void memberWith4BooksCanBorrow5thBook() {
+
+        // Create member
+        MemberManager.addMember("M003", "Hassan");
+
+        // Create 5 books
+        BookManager.addBook("Book 1", "Author 1", "3234567890123", 1);
+        BookManager.addBook("Book 2", "Author 2", "3234567890124", 1);
+        BookManager.addBook("Book 3", "Author 3", "3234567890125", 1);
+        BookManager.addBook("Book 4", "Author 4", "3234567890126", 1);
+        BookManager.addBook("Book 5", "Author 5", "3234567890127", 1);
+
+        // Borrow 4 books
+        MemberManager.borrowBook("M003", "3234567890123");
+        MemberManager.borrowBook("M003", "3234567890124");
+        MemberManager.borrowBook("M003", "3234567890125");
+        MemberManager.borrowBook("M003", "3234567890126");
+
+        // 5th book should be allowed
+        assertDoesNotThrow(() ->
+            MemberManager.borrowBook("M003", "3234567890127")
+        );
+    }
+
 }

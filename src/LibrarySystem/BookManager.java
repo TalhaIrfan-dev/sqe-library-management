@@ -52,15 +52,6 @@ public class BookManager
             }
         }
 
-        // // Duplicate title validation retained from Lab 3
-        for (book b : books)
-        {
-            if (b.bookName.equalsIgnoreCase(title.trim()))
-            {
-                throw new IllegalArgumentException("Book already exists");
-            }
-        }
-
         book book = new book(title.trim(), author.trim(), ISBN.trim(), copies);
         books.add(book);
     }

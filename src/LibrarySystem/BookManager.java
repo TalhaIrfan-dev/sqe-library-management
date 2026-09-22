@@ -63,9 +63,7 @@ public class BookManager
             return false;
         }
 
-        String isbn = ISBN.trim();
-
-        return isbn.matches("\\d{13}");
+        return ISBN.matches("\\d{13}");
     }
 
 

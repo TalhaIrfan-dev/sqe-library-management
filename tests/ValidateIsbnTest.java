@@ -1,4 +1,4 @@
-package tests;
+
 
 import LibrarySystem.BookManager;
 import org.junit.jupiter.api.Test;
@@ -68,5 +68,12 @@ public class ValidateIsbnTest {
         assertFalse(
             BookManager.validateIsbn("123456789012345")
         );
+    }
+
+    @Test
+    void shouldRejectIsbnWithLeadingOrTrailingSpaces() {
+        assertFalse(BookManager.validateIsbn(" 1234567890123"));
+        assertFalse(BookManager.validateIsbn("1234567890123 "));
+        assertFalse(BookManager.validateIsbn(" 1234567890123 "));
     }
 }

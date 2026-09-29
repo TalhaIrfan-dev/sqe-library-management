@@ -1,4 +1,3 @@
-package tests;
 
 import LibrarySystem.FineCalculator;
 import org.junit.jupiter.params.ParameterizedTest;

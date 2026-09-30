@@ -116,7 +116,17 @@ public class BookManager
         return null;
     }
 
-    
+    public static int totalAvailableCopies()
+    {
+        int total = 0;
+
+        for (book b : books)
+        {
+            total += b.getavailableCopies();
+        }
+
+        return total;
+    }
 
     public static void exportCatalog(String path) throws IOException
     {

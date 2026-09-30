@@ -1,4 +1,7 @@
 package LibrarySystem;
+
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -111,6 +114,24 @@ public class BookManager
         }
 
         return null;
+    }
+
+    public static void exportCatalog(String path) throws IOException
+    {
+        try (FileWriter writer = new FileWriter(path))
+        {
+            for (book b : books)
+            {
+                writer.write(
+                    "Title: " + b.getbookName()
+                    + ", Author: " + b.getauthor()
+                    + ", ISBN: " + b.getISBN()
+                    + ", Available: " + b.getavailableCopies()
+                    + ", Total: " + b.gettotalCopies()
+                    + System.lineSeparator()
+                );
+            }
+        }
     }
     
 }

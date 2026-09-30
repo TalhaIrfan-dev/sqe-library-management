@@ -1,11 +1,19 @@
-
-
 import LibrarySystem.FineCalculator;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class FineTierTest {
+
+    // Function-scope setup: use @BeforeEach when each test
+    // needs a fresh or independent setup.
+    @BeforeEach
+    void setUp() {
+        // Shared setup for each test.
+        // FineCalculator does not require object initialization,
+        // so no additional setup is needed here.
+    }
 
     @Test
     void negativeValueShouldBeRejected() {

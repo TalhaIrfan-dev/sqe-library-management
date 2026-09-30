@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class BorrowLimitTest {
 
+    // Class-scope setup: use @BeforeAll when the setup is expensive
+    // and can safely be shared by all tests in this class.
     @BeforeEach
     void setUp() {
         // Clear previous test data

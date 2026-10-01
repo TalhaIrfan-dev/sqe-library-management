@@ -114,13 +114,11 @@ public class BorrowBookParameterizedTest {
         }
 
         if (shouldPass) {
-
             assertDoesNotThrow(() ->
                     MemberManager.borrowBook(memberId, isbn)
             );
 
         } else {
-
             assertThrows(
                     IllegalArgumentException.class,
                     () -> MemberManager.borrowBook(memberId, isbn)
@@ -129,9 +127,7 @@ public class BorrowBookParameterizedTest {
     }
 
     static Stream<Arguments> borrowBookCases() {
-
         return Stream.of(
-
                 // 1. Valid borrowing
                 Arguments.of(
                         "valid borrow",
@@ -139,7 +135,6 @@ public class BorrowBookParameterizedTest {
                         "1234567890123",
                         true
                 ),
-
                 // 2. Member does not exist
                 Arguments.of(
                         "member not found",
@@ -147,7 +142,6 @@ public class BorrowBookParameterizedTest {
                         "1234567890123",
                         false
                 ),
-
                 // 3. Book does not exist
                 Arguments.of(
                         "book not found",

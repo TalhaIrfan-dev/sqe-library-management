@@ -128,7 +128,7 @@ public class BookManager
         return total;
     }
 
-    public static void exportCatalog(String path) throws IOException
+   public static void exportCatalog(String path)
     {
         try (FileWriter writer = new FileWriter(path))
         {
@@ -143,6 +143,13 @@ public class BookManager
                     + System.lineSeparator()
                 );
             }
+        }
+        catch (IOException e)
+        {
+            throw new LibraryIOException(
+                "Failed to export library catalog.",
+                e
+            );
         }
     }
     

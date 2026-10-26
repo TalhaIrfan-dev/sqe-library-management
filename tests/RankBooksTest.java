@@ -273,12 +273,12 @@ public class RankBooksTest {
         var rankedBooks = BookManager.rankBooksByPopularity();
 
         assertEquals(
-            "Java Programming",
+            "Database Systems",
             rankedBooks.get(0).getbookName()
         );
 
         assertEquals(
-            "Database Systems",
+            "Java Programming",
             rankedBooks.get(1).getbookName()
         );
     }

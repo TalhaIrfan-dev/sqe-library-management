@@ -152,5 +152,27 @@ public class BookManager
             );
         }
     }
+
+    public static List<book> rankBooksByPopularity()
+    {
+        List<book> rankedBooks = new ArrayList<>(books);
+
+        rankedBooks.sort(BookManager::compareByPopularity);
+
+        return rankedBooks;
+    }
+
+    private static int compareByPopularity(book b1, book b2)
+    {
+        int borrowComparison =
+            Integer.compare(b2.borrowCount, b1.borrowCount);
+
+        if (borrowComparison != 0)
+        {
+            return borrowComparison;
+        }
+
+        return b1.bookName.compareToIgnoreCase(b2.bookName);
+    }
     
 }

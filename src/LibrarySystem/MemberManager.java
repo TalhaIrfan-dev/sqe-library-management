@@ -93,6 +93,7 @@ public class MemberManager
 
         m.borrowedBooks.add(selectedBook);
         selectedBook.availableCopies--;
+        selectedBook.borrowCount++;
 
         LocalDate borrowDate = LocalDate.now();
         LocalDate dueDate = borrowDate.plusDays(7);

@@ -155,7 +155,7 @@ public class BookManager
 
     public static List<book> rankBooksByPopularity()
     {
-        return new ArrayList<>();
+        return new ArrayList<>(books);
     }
     
 }

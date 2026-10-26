@@ -158,10 +158,17 @@ public class BookManager
         List<book> rankedBooks = new ArrayList<>(books);
 
         rankedBooks.sort(
-            (b1, b2) -> Integer.compare(
-                b2.borrowCount,
-                b1.borrowCount
-            )
+            (b1, b2) -> {
+                int borrowComparison =
+                    Integer.compare(b2.borrowCount, b1.borrowCount);
+
+                if (borrowComparison != 0)
+                {
+                    return borrowComparison;
+                }
+
+                return b1.bookName.compareToIgnoreCase(b2.bookName);
+            }
         );
 
         return rankedBooks;

@@ -36,4 +36,69 @@ public class RankBooksTest {
             rankedBooks.get(0).getbookName()
         );
     }
+
+    @Test
+    void booksShouldBeRankedByBorrowCountDescending() {
+
+        BookManager.addBook(
+            "Java Programming",
+            "John Smith",
+            "1234567890123",
+            1
+        );
+
+        BookManager.addBook(
+            "Database Systems",
+            "Robert Martin",
+            "1234567890124",
+            1
+        );
+
+        BookManager.addBook(
+            "Software Engineering",
+            "Ian Sommerville",
+            "1234567890125",
+            1
+        );
+
+        MemberManager.addMember("M001", "Ali");
+
+        // Java Programming → borrowed 3 times
+        MemberManager.borrowBook("M001", "1234567890123");
+        MemberManager.returnBook("M001", "1234567890123");
+
+        MemberManager.borrowBook("M001", "1234567890123");
+        MemberManager.returnBook("M001", "1234567890123");
+
+        MemberManager.borrowBook("M001", "1234567890123");
+        MemberManager.returnBook("M001", "1234567890123");
+
+        // Database Systems → borrowed 1 time
+        MemberManager.borrowBook("M001", "1234567890124");
+        MemberManager.returnBook("M001", "1234567890124");
+
+        // Software Engineering → borrowed 2 times
+        MemberManager.borrowBook("M001", "1234567890125");
+        MemberManager.returnBook("M001", "1234567890125");
+
+        MemberManager.borrowBook("M001", "1234567890125");
+        MemberManager.returnBook("M001", "1234567890125");
+
+        var rankedBooks = BookManager.rankBooksByPopularity();
+
+        assertEquals(
+            "Java Programming",
+            rankedBooks.get(0).getbookName()
+        );
+
+        assertEquals(
+            "Software Engineering",
+            rankedBooks.get(1).getbookName()
+        );
+
+        assertEquals(
+            "Database Systems",
+            rankedBooks.get(2).getbookName()
+        );
+    }
 }

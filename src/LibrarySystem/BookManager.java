@@ -152,5 +152,10 @@ public class BookManager
             );
         }
     }
+
+    public static List<book> rankBooksByPopularity()
+    {
+        return new ArrayList<>();
+    }
     
 }

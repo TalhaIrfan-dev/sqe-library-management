@@ -18,6 +18,7 @@ public class RankBooksTest {
         );
     }
 
+    
     @Test
     void singleBookShouldReturnThatBook() {
 
@@ -64,25 +65,16 @@ public class RankBooksTest {
         MemberManager.addMember("M001", "Ali");
 
         // Java Programming → borrowed 3 times
-        MemberManager.borrowBook("M001", "1234567890123");
-        MemberManager.returnBook("M001", "1234567890123");
-
-        MemberManager.borrowBook("M001", "1234567890123");
-        MemberManager.returnBook("M001", "1234567890123");
-
-        MemberManager.borrowBook("M001", "1234567890123");
-        MemberManager.returnBook("M001", "1234567890123");
+        borrowAndReturn("M001", "1234567890123");
+        borrowAndReturn("M001", "1234567890123");
+        borrowAndReturn("M001", "1234567890123");
 
         // Database Systems → borrowed 1 time
-        MemberManager.borrowBook("M001", "1234567890124");
-        MemberManager.returnBook("M001", "1234567890124");
+        borrowAndReturn("M001", "1234567890124");
 
         // Software Engineering → borrowed 2 times
-        MemberManager.borrowBook("M001", "1234567890125");
-        MemberManager.returnBook("M001", "1234567890125");
-
-        MemberManager.borrowBook("M001", "1234567890125");
-        MemberManager.returnBook("M001", "1234567890125");
+        borrowAndReturn("M001", "1234567890125");
+        borrowAndReturn("M001", "1234567890125");
 
         var rankedBooks = BookManager.rankBooksByPopularity();
 
@@ -100,5 +92,10 @@ public class RankBooksTest {
             "Database Systems",
             rankedBooks.get(2).getbookName()
         );
+    }
+
+    private void borrowAndReturn(String memberId, String isbn) {
+        MemberManager.borrowBook(memberId, isbn);
+        MemberManager.returnBook(memberId, isbn);
     }
 }

@@ -155,7 +155,16 @@ public class BookManager
 
     public static List<book> rankBooksByPopularity()
     {
-        return new ArrayList<>(books);
+        List<book> rankedBooks = new ArrayList<>(books);
+
+        rankedBooks.sort(
+            (b1, b2) -> Integer.compare(
+                b2.borrowCount,
+                b1.borrowCount
+            )
+        );
+
+        return rankedBooks;
     }
     
 }

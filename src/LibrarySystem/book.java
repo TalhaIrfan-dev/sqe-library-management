@@ -6,6 +6,7 @@ public class book
         String ISBN;
         int totalCopies;
         int availableCopies;
+        int borrowCount;
 
         book(String title, String author, String ISBN, int copies)
         {
@@ -14,6 +15,7 @@ public class book
             this.ISBN = ISBN;
             this.totalCopies = copies;
             this.availableCopies = copies;
+            this.borrowCount = 0;
         }
 
         public String getbookName()

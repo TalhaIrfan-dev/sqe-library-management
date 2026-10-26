@@ -9,6 +9,7 @@ public class RankBooksTest {
     @BeforeEach
     void setUp() {
         BookManager.books.clear();
+        MemberManager.members.clear();
     }
 
     @Test
@@ -98,4 +99,42 @@ public class RankBooksTest {
         MemberManager.borrowBook(memberId, isbn);
         MemberManager.returnBook(memberId, isbn);
     }
+
+    @Test
+    void booksWithSameBorrowCountShouldBeSortedAlphabetically() {
+
+        BookManager.addBook(
+            "Java Programming",
+            "John Smith",
+            "1234567890123",
+            1
+        );
+
+        BookManager.addBook(
+            "Algorithms",
+            "Robert Martin",
+            "1234567890124",
+            1
+        );
+
+        MemberManager.addMember("M001", "Ali");
+
+        // Both books are borrowed once.
+        borrowAndReturn("M001", "1234567890123");
+        borrowAndReturn("M001", "1234567890124");
+
+        var rankedBooks = BookManager.rankBooksByPopularity();
+
+        assertEquals(
+            "Algorithms",
+            rankedBooks.get(0).getbookName()
+        );
+
+        assertEquals(
+            "Java Programming",
+            rankedBooks.get(1).getbookName()
+        );
+    }
+
+
 }

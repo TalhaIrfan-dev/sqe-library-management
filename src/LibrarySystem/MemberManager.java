@@ -152,4 +152,36 @@ public class MemberManager
 
         return fine;
     }
+
+
+    /**
+     * Calculates the borrowing percentile of a member based on
+     * the number of books currently borrowed.
+     *
+     * @param memberId the ID of the member
+     * @return the member's borrowing percentile
+     * @throws IllegalArgumentException if the member is not found
+     */
+    public static double borrowPercentile(String memberId)
+    {
+        member target = findMember(memberId);
+
+        if (target == null)
+        {
+            throw new IllegalArgumentException("Member not found");
+        }
+
+        int totalMembers = members.size();
+        int membersWithFewerBorrows = 0;
+
+        for (member m : members)
+        {
+            if (m.borrowedBooks.size() < target.borrowedBooks.size())
+            {
+                membersWithFewerBorrows++;
+            }
+        }
+
+        return totalMembers == 1 ? 100.0 : ((double) membersWithFewerBorrows / (totalMembers - 1)) * 100;
+    }
 }

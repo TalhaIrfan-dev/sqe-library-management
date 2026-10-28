@@ -152,4 +152,27 @@ public class MemberManager
 
         return fine;
     }
+
+    public static double borrow_percentile(String memberId)
+    {
+        member target = findMember(memberId);
+
+        if (target == null)
+        {
+            throw new IllegalArgumentException("Member not found");
+        }
+
+        int totalMembers = members.size();
+        int rank = 0;
+
+        for (member m : members)
+        {
+            if (m.borrowedBooks.size() < target.borrowedBooks.size())
+            {
+                rank++;
+            }
+        }
+
+        return ((double) rank / totalMembers) * 100;
+    }
 }

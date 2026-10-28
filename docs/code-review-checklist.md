@@ -33,4 +33,10 @@ Use specific and actionable comments when an issue is found. Explain what the pr
 
 ## Lessons Learned
 
-_To be completed after the Lab 9 review and retrospective._
+### Most Valuable Issue Found
+The most valuable issue was the incorrect percentile calculation. The original implementation did not correctly represent the full percentile range and did not properly handle the single-member case. The review identified this logic and required both a corrected calculation and boundary-case tests.
+
+### Checklist Improvement
+Add the following checkpoint for future reviews:
+
+- [ ] Are calculations and formulas verified for boundary cases and representative input values?

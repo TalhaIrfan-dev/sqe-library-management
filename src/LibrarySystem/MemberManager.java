@@ -173,6 +173,8 @@ public class MemberManager
             }
         }
 
-        return ((double) rank / totalMembers) * 100;
+        return totalMembers == 1
+        ? 100.0
+        : ((double) rank / (totalMembers - 1)) * 100;
     }
 }

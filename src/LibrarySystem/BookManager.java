@@ -189,23 +189,17 @@ public class BookManager
         }
 
         book selectedBook = findBookByISBN(ISBN);
-        int reservationLimit = 3;
 
         if (selectedBook == null)
         {
             throw new IllegalArgumentException("Book not found");
         }
 
-        if (selectedBook.availableCopies > 3)
+        if (selectedBook.availableCopies > 0)
         {
             throw new IllegalArgumentException("Book is currently available");
         }
 
-        String normalizedMemberId = memberId.trim();
-        String normalizedISBN = ISBN.trim();
-
-        String duplicateReservation = normalizedMemberId + ":" + normalizedISBN;
-        
         String reservation = memberId.trim() + ":" + ISBN.trim();
         reservations.add(reservation);
     }
@@ -215,11 +209,6 @@ public class BookManager
         if (memberId == null || memberId.trim().isEmpty())
         {
             throw new IllegalArgumentException("Member ID cannot be empty");
-        }
-
-        if (ISBN == null || ISBN.trim().isEmpty())
-        {
-            throw new IllegalArgumentException("ISBN cannot be empty");
         }
 
         if (ISBN == null || ISBN.trim().isEmpty())
@@ -243,20 +232,34 @@ public class BookManager
 
         for (String reservation : reservations)
         {
-            if (reservation.endsWith(":" + ISBN.trim()) == true)
+            if (reservation.endsWith(":" + ISBN.trim()))
             {
                 count++;
             }
         }
 
-        if (count >= 0)
+        return count;
+    }
+
+    public static String generateReservationReport()
+    {
+        String report = "";
+
+        for (String reservation : reservations)
         {
-            return count;
+            report = report + "Reservation: " + reservation + "\n";
+        }
+
+        if (reservations.size() > 0)
+        {
+            report = report + "Total reservations: " + reservations.size() + "\n";
         }
         else
         {
-            return 0;
+            report = report + "Total reservations: 0\n";
         }
+
+        return report;
     }
     
 }

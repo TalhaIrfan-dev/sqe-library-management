@@ -57,10 +57,7 @@ public class MemberManager
 
     public static void borrowBook(String memberId, String ISBN)
     {
-        if (ISBN == null || ISBN.trim().isEmpty())
-        {
-            throw new IllegalArgumentException("ISBN cannot be empty");
-        }
+        validateISBN(ISBN);
 
         member m = findMember(memberId);
 
@@ -106,10 +103,7 @@ public class MemberManager
 
     public static double returnBook(String memberId, String ISBN)
     {
-        if (ISBN == null || ISBN.trim().isEmpty())
-        {
-            throw new IllegalArgumentException("ISBN cannot be empty");
-        }
+        validateISBN(ISBN);
 
         member m = findMember(memberId);
 
@@ -187,5 +181,13 @@ public class MemberManager
         return totalMembers == 1
             ? 100.0
             : ((double) membersWithFewerBorrows / (totalMembers - 1)) * 100;
+    }
+
+    private static void validateISBN(String ISBN)
+    {
+        if (ISBN == null || ISBN.trim().isEmpty())
+        {
+            throw new IllegalArgumentException("ISBN cannot be empty");
+        }
     }
 }

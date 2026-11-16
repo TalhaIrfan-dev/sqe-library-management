@@ -23,8 +23,9 @@ public class member
     {return memberId;}
     public String getmemberName()
     {return memberName;}
-    public List getborrowedBooks()
+    public List<book> getborrowedBooks()
     {return borrowedBooks;}
-    public Map getdueDates()
+
+    public Map<book, LocalDate> getdueDates()
     {return dueDates;}
 }

@@ -1,4 +1,3 @@
-
 import LibrarySystem.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,8 +33,19 @@ public class BorrowLimitTest {
         MemberManager.borrowBook("M001", "1234567890125");
 
         // 4th book should be allowed
-        assertDoesNotThrow(() ->
-            MemberManager.borrowBook("M001", "1234567890126")
+        MemberManager.borrowBook("M001", "1234567890126");
+
+        member member = MemberManager.findMember("M001");
+        book borrowedBook = BookManager.findBookByISBN("1234567890126");
+
+        assertNotNull(member);
+        assertNotNull(borrowedBook);
+
+        assertEquals(4, member.getborrowedBooks().size());
+        assertEquals(0, borrowedBook.getavailableCopies());
+        assertEquals(
+            "1234567890126",
+            member.getborrowedBooks().get(3).getISBN()
         );
     }
 

@@ -1,10 +1,14 @@
 package LibrarySystem;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MemberManager
 {
+    private static final int MAX_BORROWED_BOOKS = 5;
+    private static final int LOAN_PERIOD_DAYS = 7;
+
     public static List<member> members = new ArrayList<>();
 
     public static void addMember(String memberId, String memberName)
@@ -53,11 +57,10 @@ public class MemberManager
 
     public static void borrowBook(String memberId, String ISBN)
     {
-         if (ISBN == null || ISBN.trim().isEmpty())
+        if (ISBN == null || ISBN.trim().isEmpty())
         {
             throw new IllegalArgumentException("ISBN cannot be empty");
         }
-
 
         member m = findMember(memberId);
 
@@ -86,7 +89,7 @@ public class MemberManager
             throw new IllegalArgumentException("No copies available");
         }
 
-        if (m.borrowedBooks.size() >= 5)
+        if (m.borrowedBooks.size() >= MAX_BORROWED_BOOKS)
         {
             throw new IllegalArgumentException("Borrowing limit reached");
         }
@@ -96,7 +99,7 @@ public class MemberManager
         selectedBook.borrowCount++;
 
         LocalDate borrowDate = LocalDate.now();
-        LocalDate dueDate = borrowDate.plusDays(7);
+        LocalDate dueDate = borrowDate.plusDays(LOAN_PERIOD_DAYS);
 
         m.dueDates.put(selectedBook, dueDate);
     }
@@ -153,7 +156,6 @@ public class MemberManager
         return fine;
     }
 
-
     /**
      * Calculates the borrowing percentile of a member based on
      * the number of books currently borrowed.
@@ -182,6 +184,8 @@ public class MemberManager
             }
         }
 
-        return totalMembers == 1 ? 100.0 : ((double) membersWithFewerBorrows / (totalMembers - 1)) * 100;
+        return totalMembers == 1
+            ? 100.0
+            : ((double) membersWithFewerBorrows / (totalMembers - 1)) * 100;
     }
 }

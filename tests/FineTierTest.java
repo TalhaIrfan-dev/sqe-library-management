@@ -47,4 +47,10 @@ public class FineTierTest {
     void severeTierShouldBeReturned() {
         assertEquals("Severe", FineCalculator.fineTier(45));
     }
+
+    @Test
+    void calculateFineForMoreThanTenOverdueDays()
+    {
+        assertEquals(450, FineCalculator.calculateFine(15));
+    }
 }

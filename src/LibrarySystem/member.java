@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.time.LocalDate;
 
 public class member
 {
@@ -24,8 +23,9 @@ public class member
     {return memberId;}
     public String getmemberName()
     {return memberName;}
-    public List getborrowedBooks()
+    public List<book> getborrowedBooks()
     {return borrowedBooks;}
-    public Map getdueDates()
+
+    public Map<book, LocalDate> getdueDates()
     {return dueDates;}
 }

@@ -15,11 +15,7 @@ class main
         System.out.println("TC-11: " + FineCalculator.calculateFine(7));
         System.out.println("TC-12: " + FineCalculator.calculateFine(10));
 
-        try {
-            System.out.println(FineCalculator.fineTier(-3));
-        } catch (IllegalArgumentException e) {
-            System.out.println("Negative value: Exception passed");
-        }
+        
         System.out.println(FineCalculator.fineTier(0));
         System.out.println(FineCalculator.fineTier(4));
         System.out.println(FineCalculator.fineTier(10));

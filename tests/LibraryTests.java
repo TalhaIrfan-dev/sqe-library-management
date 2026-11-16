@@ -1,9 +1,15 @@
-
-
 import LibrarySystem.*;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LibraryTests
 {
+    @Test
+    void fineCalculatorReturnsZeroForNoOverdueDays()
+    {
+        assertEquals(0, FineCalculator.calculateFine(0));
+    }
     public static void main(String[] args)
     {
          // ============================================================

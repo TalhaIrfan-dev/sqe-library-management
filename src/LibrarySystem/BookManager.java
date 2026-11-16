@@ -8,6 +8,7 @@ import java.util.List;
 public class BookManager 
 {
     public static List<book> books = new ArrayList<>();   // public should be removed
+    public static List<String> reservations = new ArrayList<>();
 
     /**
      * Adds a new book to the library after validating its details.
@@ -173,6 +174,89 @@ public class BookManager
         }
 
         return b1.bookName.compareToIgnoreCase(b2.bookName);
+    }
+
+    public static void reserveBook(String memberId, String ISBN)
+    {
+        if (memberId == null || memberId.trim().isEmpty())
+        {
+            throw new IllegalArgumentException("Member ID cannot be empty");
+        }
+
+        if (ISBN == null || ISBN.trim().isEmpty())
+        {
+            throw new IllegalArgumentException("ISBN cannot be empty");
+        }
+
+        book selectedBook = findBookByISBN(ISBN);
+        int reservationLimit = 3;
+
+        if (selectedBook == null)
+        {
+            throw new IllegalArgumentException("Book not found");
+        }
+
+        if (selectedBook.availableCopies > 3)
+        {
+            throw new IllegalArgumentException("Book is currently available");
+        }
+
+        String normalizedMemberId = memberId.trim();
+        String normalizedISBN = ISBN.trim();
+
+        String duplicateReservation = normalizedMemberId + ":" + normalizedISBN;
+        
+        String reservation = memberId.trim() + ":" + ISBN.trim();
+        reservations.add(reservation);
+    }
+
+    public static void cancelReservation(String memberId, String ISBN)
+    {
+        if (memberId == null || memberId.trim().isEmpty())
+        {
+            throw new IllegalArgumentException("Member ID cannot be empty");
+        }
+
+        if (ISBN == null || ISBN.trim().isEmpty())
+        {
+            throw new IllegalArgumentException("ISBN cannot be empty");
+        }
+
+        if (ISBN == null || ISBN.trim().isEmpty())
+        {
+            throw new IllegalArgumentException("ISBN cannot be empty");
+        }
+
+        String reservation = memberId.trim() + ":" + ISBN.trim();
+
+        if (!reservations.contains(reservation))
+        {
+            throw new IllegalArgumentException("Reservation not found");
+        }
+
+        reservations.remove(reservation);
+    }
+
+    public static int getReservationCount(String ISBN)
+    {
+        int count = 0;
+
+        for (String reservation : reservations)
+        {
+            if (reservation.endsWith(":" + ISBN.trim()) == true)
+            {
+                count++;
+            }
+        }
+
+        if (count >= 0)
+        {
+            return count;
+        }
+        else
+        {
+            return 0;
+        }
     }
     
 }

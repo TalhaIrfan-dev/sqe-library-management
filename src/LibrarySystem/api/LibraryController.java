@@ -87,7 +87,7 @@ public class LibraryController {
     // ---------------------------------------------------------
     @GetMapping("/books/{isbn}")
     public ResponseEntity<BookResponse> getBook(
-            @PathVariable String isbn) {
+            @PathVariable("isbn") String isbn) {
 
         book found = BookManager.findBookByISBN(isbn);
 
@@ -107,7 +107,7 @@ public class LibraryController {
     // ---------------------------------------------------------
     @PostMapping("/members/{id}/borrow")
     public ResponseEntity<Map<String, Object>> borrowBook(
-            @PathVariable String id,
+            @PathVariable("id") String id,
             @RequestBody Map<String, Object> body) {
 
         String isbn = text(body, "isbn");
@@ -153,7 +153,7 @@ public class LibraryController {
     // ---------------------------------------------------------
     @PostMapping("/members/{id}/return")
     public ResponseEntity<Map<String, Object>> returnBook(
-            @PathVariable String id,
+            @PathVariable("id") String id,
             @RequestBody Map<String, Object> body) {
 
         String isbn = text(body, "isbn");
@@ -191,8 +191,8 @@ public class LibraryController {
     // ---------------------------------------------------------
     @GetMapping("/members/{id}/fines")
     public ResponseEntity<Map<String, Object>> getFineTier(
-            @PathVariable String id,
-            @RequestParam int daysOverdue) {
+            @PathVariable("id") String id,
+            @RequestParam("daysOverdue") int daysOverdue) {
 
         String tier;
 
